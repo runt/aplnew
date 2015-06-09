@@ -1,0 +1,56 @@
+<script type="text/javascript" src="{$baseUri}js/calendar.js"></script>
+
+<div id="debuginfo" class="{$secclasses['lesen'][$form_id.'_debuginfo']}">
+</div>
+
+<div id="fillformular">
+    <table>
+        <tr>
+            <td>Guss</td>
+        </tr>
+        <tr>
+            <td>Frueh</td>
+            <td>von:</td>
+            <td><input type="text" id="fill_guss_f_von" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td>bis:</td>
+            <td><input type="text" id="fill_guss_f_bis" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td><input type="button" value="set" id="button_fill_guss_f" acturl="{link fillvonbis}"/></td>
+        </tr>
+        <tr>
+            <td>Spaet</td>
+            <td>von:</td>
+            <td><input type="text" id="fill_guss_s_von" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td>bis:</td>
+            <td><input type="text" id="fill_guss_s_bis" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td><input type="button" value="set" id="button_fill_guss_s" acturl="{link fillvonbis}"/></td>
+        </tr>
+        <tr>
+            <td>NE</td>
+        </tr>
+        <tr>
+            <td>Frueh</td>
+            <td>von:</td>
+            <td><input type="text" id="fill_ne_f_von" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td>bis:</td>
+            <td><input type="text" id="fill_ne_f_bis" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td><input type="button" value="set" id="button_fill_ne_f" acturl="{link fillvonbis}"/></td>
+        </tr>
+        <tr>
+            <td>Spaet</td>
+            <td>von:</td>
+            <td><input type="text" id="fill_ne_s_von" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td>bis:</td>
+            <td><input type="text" id="fill_ne_s_bis" acturl="{link updatevonbis}" size="4" maxlength="5"/></td>
+            <td><input type="button" value="set" id="button_fill_ne_s" acturl="{link fillvonbis}"/></td>
+        </tr>
+    </table>
+</div>
+
+
+<h2>Kalendar</h2>
+
+Monat - Jahr: <input type="text" name="monatjahr" id="monatjahr" acturl="{link Calendar:validateMonatJahr}" value="{$rokmesic}">
+
+<div id="monatPlanTable">
+    
+</div>

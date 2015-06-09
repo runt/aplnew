@@ -1,0 +1,44 @@
+<script type="text/javascript" src="{$baseUri}js/dpersanwesenheit.js"></script>
+
+<div id="navigace">
+<ul>
+        <li>
+            <a href="{link Calendar:}">Kalender Edit / editace kalendare</a>
+        </li>
+        <li id="li_saveursprunglink" class="{$secclasses['lesen'][$form_id.'_li_saveursprunglink']}">
+            <a id="saveursprunglink" href="" acturl="{link saveDzeitsoll2}">Ursprungsplanung speichern / ulozit puvodni plan</a>
+        </li>
+        <li id="li_fillMonatPlanlink" class="{$secclasses['lesen'][$form_id.'_li_fillMonatPlanlink']}">
+            <a id="fillMonatPlanlink" href="" acturl="{link monatFuellenStandard}" >Monatsplan fuellen - Standard / naplnit měsíční plán</a>
+        </li>
+</ul>
+</div>
+
+<div id="debuginfo" class="{$secclasses['lesen'][$form_id.'_debuginfo']}">
+</div>
+
+<div id="stundeninfo" class="{$secclasses['lesen'][$form_id.'_stundeninfo']}">
+    <table id="stundeninfotable">
+        <tr><td>Regel/arbzeit:</td><td><input style="white-space:nowrap" type="text" size="2" name="regelarbzeit" id="regelarbzeit" acturl="{link DPersAnwesenheit:updateRegelarbzeit}"/>Std.</td></tr>
+        <tr><td>RegelOE:</td><td>{$regeloeselect}</td></tr>
+        <tr><td>Stdsoll-Datum:</td><td><input style="white-space:nowrap" type="text" size="3" name="stdsolldatum" id="stdsolldatum" acturl="{link DPersAnwesenheit:updateStdsolldatum}"/>Std.</td></tr>
+        <tr><td>Urlaubrest (bis <span id="urlaubrestbisvalue"></span>) :</td><td id="urlaubrestvalue"></td></tr>
+        <tr><td>Arbeitstage :</td><td id="arbtagevalue"></td></tr>
+        <tr><td>Sollstunden :</td><td id="sollstundenvalue"></td></tr>
+        <tr><td>PlusMinusStunden :</td><td id="plusminusstundenvalue"></td></tr>
+        <tr class="planstunden"><td>Planstunden :</td><td id="planstundenvalue"></td></tr>
+        <tr class="iststunden"><td>Iststunden :</td><td id="istanwesenheitvalue"></td></tr>
+    </table>
+</div>
+
+<h2>Personal Planung</h2>
+
+Persnr: <input type="text" name="persnr" id="persnr" acturl="{link DPersAnwesenheit:getPersnrInfo}">
+<span id="nameinfo" class="persinfo">
+</span>
+<br>
+Monat - Jahr: <input type="text" name="monatjahr" id="monatjahr" acturl="{link DPersAnwesenheit:validateMonatJahr}" value="{$rokmesic}">
+
+<div id="monatPlanTable">
+    
+</div>

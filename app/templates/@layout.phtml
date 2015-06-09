@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Language" content="en">
+	<link rel="stylesheet" media="screen,projection,tv" href="{$baseUri}css/screen.css" type="text/css">
+        <script type="text/javascript" src="{$baseUri}js/jquery.js"></script>
+        <script type="text/javascript" src="{$baseUri}plupload/js/plupload.full.js"></script>
+        <script type="text/javascript" src="{$baseUri}js/apl.js"></script>
+	<link rel="shortcut icon" href="{$baseUri}favicon.ico" type="image/x-icon">
+
+
+        <title>APL / Abydos s.r.o.</title>
+</head>
+
+<body>
+    <div id='logininfo'>
+        {if $userAuthenticated==true}
+        {$userRealname} ( {$userRoles} )&nbsp;
+        <a href='{link Auth:logout}'>abmelden</a>
+        {else}
+        nicht angemeldet / neprihlasen
+        {/if}
+    </div>
+    <div id='presenterinfo'>
+        <a href="{link Default:}"> Hauptmenue</a>
+    </div>
+
+<!--    <div id="formularheader">
+        <a href="{link Default:}">APL</a>
+    </div>-->
+
+
+    <div id="formularcontent">
+        {include $content}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:exif='http://schemas.google.com/photos/exif/2007' xmlns:gphoto='http://schemas.google.com/photos/2007' xmlns:media='http://search.yahoo.com/mrss/' xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/'>
+    <id>http://picasaweb.google.com/data/feed/api/user/josef.runt/albumid/5428098255226436305</id>
+    <updated>2010-01-19T22:47:00.134Z</updated>
+    <category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#album'/>
+    <title type='text'>Malování prstovými barvami</title>
+    <subtitle type='text'/>
+    <rights type='text'>public</rights>
+    <icon>http://lh6.ggpht.com/_BjGQEitUO_M/S1R6mpSwetE/AAAAAAAAT90/SGNlJMmOkL4/s160-c/MalovaniPrstovymiBarvami.jpg</icon>
+    <link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/josef.runt/albumid/5428098255226436305'/>
+    <link rel='alternate' type='text/html' href='http://picasaweb.google.com/josef.runt/MalovaniPrstovymiBarvami'/>
+    <link rel='http://schemas.google.com/photos/2007#slideshow' type='application/x-shockwave-flash' href='http://picasaweb.google.com/s/c/bin/slideshow.swf?host=picasaweb.google.com&amp;RGB=0x000000&amp;feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fjosef.runt%2Falbumid%2F5428098255226436305%3Falt%3Drss'/>
+    <link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=josef.runt&amp;aid=5428098255226436305'/>
+    <link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/josef.runt/albumid/5428098255226436305?start-index=1&amp;max-results=1000'/>
+    <author>
+        <name>Runtici</name><uri>http://picasaweb.google.com/josef.runt</uri>
+        </author>
+        <generator version='1.00' uri='http://picasaweb.google.com/'>Picasaweb</generator>
+        <openSearch:totalResults>5</openSearch:totalResults><openSearch:startIndex>1</openSearch:startIndex><openSearch:itemsPerPage>1000</openSearch:itemsPerPage>
+        <gphoto:id>5428098255226436305</gphoto:id>
+        <gphoto:name>MalovaniPrstovymiBarvami</gphoto:name>
+        <gphoto:location/>
+        <gphoto:access>public</gphoto:access>
+        <gphoto:timestamp>1263830297000</gphoto:timestamp><gphoto:numphotos>5</gphoto:numphotos><gphoto:user>josef.runt</gphoto:user>
+        <gphoto:nickname>Runtici</gphoto:nickname><gphoto:commentingEnabled>true</gphoto:commentingEnabled>
+        <gphoto:commentCount>0</gphoto:commentCount><gphoto:allowPrints>true</gphoto:allowPrints>
+        <gphoto:allowDownloads>true</gphoto:allowDownloads>
+     <entry>
+         <id>http://picasaweb.google.com/data/entry/api/user/josef.runt/albumid/5428098255226436305/photoid/5428098271882575506</id>
+         <published>2010-01-18T15:13:34.000Z</published>
+         <updated>2010-01-19T22:46:57.156Z</updated>
+         <category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+         <title type='text'>pict5457.jpg</title>
+         <summary type='text'/>
+         <content type='image/jpeg' src='http://lh3.ggpht.com/_BjGQEitUO_M/S1R6nnV4_pI/AAAAAAAAT9U/YBlCLp88Qi0/pict5457.jpg'/>
+         <link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/josef.runt/albumid/5428098255226436305/photoid/5428098271882575506'/>
+         <link rel='alternate' type='text/html' href='http://picasaweb.google.com/josef.runt/MalovaniPrstovymiBarvami#5428098271882575506'/>
+         <link rel='http://schemas.google.com/photos/2007#canonical' type='text/html' href='http://picasaweb.google.com/lh/photo/tFI8UF880EJ5yZkzm6yoYw'/>
+         <link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/josef.runt/albumid/5428098255226436305/photoid/5428098271882575506'/>
+         <link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=josef.runt&amp;aid=5428098255226436305&amp;iid=5428098271882575506'/>
+         <gphoto:id>5428098271882575506</gphoto:id>
+         <gphoto:version>4</gphoto:version>
+         <gphoto:position>1.0</gphoto:position>
+         <gphoto:albumid>5428098255226436305</gphoto:albumid>
+         <gphoto:access>public</gphoto:access>
+         <gphoto:width>1200</gphoto:width>
+         <gphoto:height>1600</gphoto:height>
+         <gphoto:size>313978</gphoto:size>
+         <gphoto:client>picasa</gphoto:client>
+         <gphoto:checksum>c987a880</gphoto:checksum>
+         <gphoto:timestamp>1263833910000</gphoto:timestamp>
+         <gphoto:imageVersion>20437</gphoto:imageVersion>
+         <gphoto:commentCount>0</gphoto:commentCount>
+         <gphoto:license id='0' name='All Rights Reserved' url=''>ALL_RIGHTS_RESERVED</gphoto:license>
+         <exif:tags>
+             <exif:fstop>2.8</exif:fstop>
+             <exif:make>Minolta Co., Ltd.</exif:make>
+             <exif:model>DiMAGE Z1</exif:model>
+             <exif:exposure>0.025</exif:exposure>
+             <exif:flash>true</exif:flash>
+             <exif:focallength>5.8</exif:focallength>
+             <exif:iso>200</exif:iso>
+             <exif:time>1263833910000</exif:time>
+             <exif:imageUniqueID>69b62d01308b8241acb2d77e8474ef0c</exif:imageUniqueID>
+         </exif:tags>
+         <media:group>
+             <media:content url='http://lh3.ggpht.com/_BjGQEitUO_M/S1R6nnV4_pI/AAAAAAAAT9U/YBlCLp88Qi0/pict5457.jpg' height='1600' width='1200' type='image/jpeg' medium='image'/>
+             <media:credit>Runtici</media:credit>
+             <media:description type='plain'/>
+             <media:keywords/>
+             <media:thumbnail url='http://lh3.ggpht.com/_BjGQEitUO_M/S1R6nnV4_pI/AAAAAAAAT9U/YBlCLp88Qi0/s72/pict5457.jpg' height='72' width='54'/>
+             <media:thumbnail url='http://lh3.ggpht.com/_BjGQEitUO_M/S1R6nnV4_pI/AAAAAAAAT9U/YBlCLp88Qi0/s144/pict5457.jpg' height='144' width='108'/>
+             <media:thumbnail url='http://lh3.ggpht.com/_BjGQEitUO_M/S1R6nnV4_pI/AAAAAAAAT9U/YBlCLp88Qi0/s288/pict5457.jpg' height='288' width='216'/>
+             <media:title type='plain'>pict5457.jpg</media:title>
+         </media:group>
+     </entry>
+  </feed>

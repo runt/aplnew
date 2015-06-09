@@ -1,0 +1,37 @@
+[databaze]
+database.driver = mysql
+database.db = koppermann
+database.host = localhost
+database.user = root
+database.pass = at90s8515
+
+[constants]
+tables.table_stammdaten = kp_stammdaten
+tables.table_umlage_erg = kp_umlage_erg
+tables.table_bab = bab
+tables.table_ausruestkosten = kp_ausruestkosten
+tables.table_bezahlte_zinsen = kp_bezahlte_zinsen
+tables.table_sd_infos = kp_sd_infos
+tables.table_umlage1 = kp_umlage1
+tables.table_umlage2 = kp_umlage2
+tables.table_umlage_act_schluessel = kp_umlage_act_schluessel
+tables.table_planwerte = planwerte
+tables.table_display_flags = display_flags
+tables.table_users = benutzer
+tables.table_profile_planwerte = profile_planwerte
+tables.table_druckoptionen = druckoptions
+
+[common.set!]
+
+date.timezone = "Europe/Prague"
+iconv.internal_encoding = "%encoding%"
+mbstring.internal_encoding = "%encoding%"
+include_path = "%appDir%;%libsDir%"
+
+
+[production < common]
+
+service.Nette-Security-IAuthenticator = Benutzer
+service.Nette-Security-IAuthorizator  = Acl
+
+[development < production]

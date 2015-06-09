@@ -1,0 +1,6 @@
+<div id="{$form_id}">
+    <div id="bt_persplan" class="menudiv {$secclasses['lesen'][$form_id.'_bt_persplan']}"><a href="{link DpersAnwesenheit:planAnwesenheit}">Personal Planung Anwesenheit / planovani personalu dochazka</a></div>
+    <div id="bt_persplanvzkd" class="menudiv {$secclasses['lesen'][$form_id.'_bt_persplanvzkd']}"><a href="{link DpersAnwesenheit:planVzkd}">Personal Planung VzKd / planovani personalu VzKd</a></div>
+    <div id="bt_edataanw" class="menudiv {$secclasses['lesen'][$form_id.'_bt_edataanw']}"><a href="{link DpersAnwesenheit:edataAnw}">Anwesenheit EDATA / dochazka EDATA</a></div>
+    <div id="bt_persverwalten" class="menudiv {$secclasses['lesen'][$form_id.'_bt_persverwalten']}"><a href="{link Persinfo:}">Personal verwalten / sprava personalu</a></div>
+</div>

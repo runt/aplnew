@@ -1,0 +1,8 @@
+
+<h2>Table „{$table}“</h2>
+
+<p><a href="{link Default:}">Return to home</a></p>
+
+{$dataGrid->renderPaginator()}
+{$dataGrid->renderGrid()}
+{$dataGrid->renderPaginator()}

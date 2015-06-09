@@ -1,0 +1,42 @@
+<h2>{$formularName}</h2>
+
+<div id="debuginfo" class="{$secclasses['lesen'][$form_id.'_debuginfo']}">
+    {!$debuginfo}
+</div>
+
+    <table class="formulartable">
+        <caption>Persinfo</caption>
+        <thead></thead>
+        <tbody>
+            <tr><th class="legend">Grundinfo</th></tr>
+            <tr>
+                <th>{$form['persnr']->label}</th><td>{$form['persnr']->control}</td>
+                <th>{$form['name']->label}</th><td>{$form['name']->control}</td>
+                <th>{$form['vorname']->label}</th><td>{$form['vorname']->control}</td>
+            </tr>
+            <tr>
+                <th>{$form['tf_eintrittsdatum']->label}</th><td>{$form['tf_eintrittsdatum']->control}</td>
+                <th>{$form['tf_austritt']->label}</th><td>{$form['tf_austritt']->control}</td>
+                <th>{$form['tf_geboren']->label}</th><td>{$form['tf_geboren']->control}</td>
+            </tr>
+            <tr><th class="legend">Zusatzinfo</th></tr>
+            <tr>
+                <th>{$form['tf_handy']->label}</th><td>{$form['tf_handy']->control}</td>
+                <th>{$form['tf_ort']->label}</th><td>{$form['tf_ort']->control}</td>
+            </tr>
+            <tr><th class="legend">Aplinfo</th></tr>
+            <tr>
+                <th>{$form['schicht']->label}</th><td>{$form['schicht']->control}</td>
+                <th>{$form['einsatzschicht']->label}</th><td>{$form['einsatzschicht']->control}</td>
+                <th>{$form['regelarbeit']->label}</th><td>{$form['regelarbeit']->control}</td>
+            </tr>
+            <tr>
+                <th>{$form['autoleistung']->label}</th><td>{$form['autoleistung']->control}</td>
+            </tr>
+            <tr>
+                <th>{$form['cb_regeloe']->label}</th><td>{$form['cb_regeloe']->control}</td>
+            </tr>
+
+        </tbody>
+        <tfoot></tfoot>
+    </table>

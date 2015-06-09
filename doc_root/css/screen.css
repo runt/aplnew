@@ -1,0 +1,923 @@
+input.gopersnrbutton {
+    font-size: 11px;
+    width: 60px;
+}
+
+table.namesuchen {
+border-collapse: collapse;
+width: 100%;
+}    
+table.namesuchen td{
+    font-size: 12px;
+    border-top: 1px solid black;
+}    
+table.namesuchen tr{
+    background-color: #fff;
+}    
+table.namesuchen tr.lichy{
+    background-color: #eee;
+}    
+
+#varHelp {
+    border: 1px solid;
+    padding: 3px;
+    background-color: darkorange;
+    display: inline-block;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#fs_madokumente legend{
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+#fs_madokumente{
+    margin-bottom: 30px;
+}
+
+#fs_templatesdokumente legend{
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+body {
+	font: 80%/1.4 "Trebuchet MS", "Geneva CE", lucida, sans-serif;
+	color: #333;
+        margin-left: 0;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+}
+
+h1 {
+	font-size: 170%;
+	color: #165ca3;
+}
+
+h2 {
+	font-size: 150%;
+	color: black;
+}
+
+h6.abteilungguss{
+    margin:0;
+    background-color:teal;
+}
+
+h6.abteilungkemper{
+    margin:0;
+    background-color:orange;
+}
+
+img {
+	border: none;
+}
+
+#logininfo{
+    position:static;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:20px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div.persid{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.bottomButton{
+    border:2px solid green;
+    background-color:#dfd;
+    height: 30px;
+/*    float: left;*/
+}
+
+
+#presenterinfo{
+    position:static;
+    left:0px;
+    top:20px;
+    width:100%;
+    height:20px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+#spinner {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+}
+
+table.template_var_table{
+    border-collapse: collapse;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}    
+table.template_var_table tr.lichy{
+    background-color: #eee;
+}    
+table.template_var_table td{
+    border: 1px solid blue;
+    padding: 2px;
+}    
+
+table.template_var_table th{
+    color: white;
+    font-weight: bold;
+    background-color: blue;
+    padding: 2px;
+    border: 1px solid blue;
+}    
+
+table.dokumenty_table{
+    border-collapse: collapse;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}    
+
+table.dokumenty_table tr.lichy{
+    background-color: #eee;
+}    
+
+table.dokumenty_table tr.insertsoubor{
+    background-color: #ccf;
+}    
+
+table.person_anwtable{
+    padding: 0;
+    margin: 0;
+    border: solid 1px black;
+    border-collapse:collapse;
+    empty-cells:show;
+}
+
+table.person_anwtable td{
+    padding: 3px;
+    background-color: beige;
+}
+table.person_anwtable td.tlabel{
+    width: 110px;
+    border-left: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
+
+table.person_anwtable td.tvalue_persnr{
+    width: 50px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+table.leistung_anwtable{
+    padding: 3px;
+    margin: 0;
+    margin-bottom: 20px;
+    border: solid 1px black;
+    border-collapse:collapse;
+    empty-cells:show;
+    font-size: 15px;
+}
+
+table.leistung_anwtable td.tvalue_oe{
+    width: 50px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-align: left;
+    font-weight: bold;
+}
+
+table.leistung_anwtable td.tvalue_stunden{
+    width: 50px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-align: right;
+    font-weight: bold;
+}
+table.person_anwtable td.tvalue_von{
+    width: 80px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    border-left: solid 1px black;
+    text-align: right;
+    font-weight: bold;
+}
+
+table.person_anwtable td.tvalue_name{
+    width: 200px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+#calendartable{
+    	padding: 0;
+	margin: 0;
+	border-collapse:collapse;
+        empty-cells:show;
+        margin-top:10px;
+}
+
+#calendartable td{
+    vertical-align:top;
+    padding-bottom:10px;
+    border-width:2px;
+}
+
+#calendartable input{
+    font-size:8px;
+}
+
+#calendartable select{
+    font-size:8px;
+}
+
+td.vikend{
+    background-color:gray;
+    color:white;
+}
+
+table.grid {
+	padding: 0;
+	margin: 0;
+	border-collapse:collapse;
+}
+
+table.formulartable th{
+    text-align: right;
+}
+
+table.formulartable th.legend{
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding-top:  10px;
+    background-color: #79bf7b;
+    font-style: italic;
+}
+
+/*-----------------------------------------------------------------------*/
+/*viditelnost prvku formulare rizena podle role prihlaseneho uzivatele*/
+
+div.lesen_denied{
+    display:none;
+}
+
+input[type=button].lesen_denied{
+    display:none;
+}
+
+div ul li.lesen_denied{
+    display:none;
+}
+
+.lesen_denied{
+    visibility: hidden;
+}
+
+.lesen_enabled{
+    visibility: visible;
+}
+/*-----------------------------------------------------------------------*/
+
+div.datuminfobox{
+    border:2px solid blue;
+    background-color:rgb(230,230,255);
+    color:black;
+    font-weight:bold;
+    font-size:8px;
+    padding:3px;
+}
+
+table.grid td, table.grid th {
+	color: #525b37;
+	background: #fff;
+	border: 1px solid #d1cdab;
+	padding: 5px 5px 1px 10px;
+        font-size:66%;
+}
+
+table.grid th {
+	color: #505767;
+	background: #e3e9ba url('../images/th-bg.gif') no-repeat;
+	text-align: left;
+	padding: 0;
+}
+
+table.grid th span {
+	color: #a19d7b;
+	font-size: 90%;
+}
+
+table.grid th a {
+	color: #165ca3;
+	text-decoration: none;
+	padding: 6px 20px 6px 12px;
+	line-height: 30px;
+}
+
+table.grid .alt td {
+	background: #f8f8f0;
+}
+
+table.grid th .asc,
+table.grid th a:hover {
+	background: url('../images/asc.gif') no-repeat right center;
+}
+
+table.grid th .desc,
+table.grid th .asc:hover {
+	background: url('../images/desc.gif') no-repeat right center;
+}
+
+table.grid th .desc:hover {
+	background: none;
+}
+
+
+
+
+
+
+.paginator {
+	margin: 1em 0;
+	font-size: 90%;
+}
+
+.paginator a, .paginator span {
+	margin-right: 0.1em;
+	padding: 0.2em 0.5em;
+	color: #999999;
+}
+
+.paginator a {
+	border: 1px solid #9AAFE5;
+	text-decoration: none;
+	color: #105CB6;
+}
+
+.paginator span.button {
+	border: 1px solid #DDDDDD;
+}
+
+.paginator .current {
+	background: #2E6AB1;
+	border: 1px solid #2E6AB1;
+	color: white;
+	font-weight: bold;
+}
+
+
+div#debuginfo{
+    position:fixed;
+    right:0px;
+    bottom:0px;
+    width:400px;
+    height:200px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+
+tr.planstunden{
+    background-color:#fee;
+}
+
+tr.iststunden{
+    background-color:#efe;
+}
+
+#stundeninfotable{
+    width:100%;
+    background-color:white;
+}
+
+#arbtagevalue{
+    font-weight:bold;
+    text-align:right;
+    font-size:1.5em;
+    width:5em;
+}
+
+
+#sollstundenvalue{
+    font-weight:bold;
+    text-align:right;
+    font-size:1.5em;
+}
+
+#planstundenvalue{
+    font-weight:bold;
+    text-align:right;
+    font-size:1.5em;
+}
+#istanwesenheitvalue{
+    font-weight:bold;
+    text-align:right;
+    font-size:1.5em;
+}
+
+#plusminusstundenvalue{
+    font-weight:bold;
+    text-align:right;
+    font-size:1.5em;
+}
+
+div#stundeninfo{
+    position:fixed;
+    right:0px;
+    top:0px;
+    width:250px;
+/*    height:400px;*/
+    overflow:auto;
+    border:2px solid blue;
+    background-color:#eef;
+    font-size:10px;
+}
+
+div#fillformular{
+    position:fixed;
+    right:0px;
+    top:0px;
+    width:300px;
+    height:200px;
+    overflow:auto;
+    border:2px solid blue;
+    background-color:#eef;
+    font-size:10px;
+}
+
+.persinfo{
+
+    font-size: 1em;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+
+.validateerror{
+    font-size: 1em;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    
+    color: white;
+    background-color: #ff0000;
+}
+
+div.formulardiv{
+    margin-left: 10px;
+}
+
+div.formulardiv div.formularfieldset{
+    border-top-color: black;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-bottom: 5px;
+}
+
+div.bottomButton ul{
+ list-style: none;
+ margin: 0px;
+ padding: 0px;
+}
+
+div.bottomButton li{
+    padding-top: 3px;
+    float: left;
+}
+
+div.bottomButton input[type=button]{
+    width: 100px;
+    font-size: 10px;
+}
+
+div.formulardiv .formularcaption{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+div.formulardiv h1{
+    font-size: 18px;
+}
+
+div.formulardiv .fieldlabel{
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+div#dpersstempel_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:450px;
+    height:200px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#vorschuss_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:250px;
+    height:200px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#essen_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:250px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#essen_zeitraum{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: silver;
+}
+
+div#transport_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:370px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#transport_zeitraum{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: silver;
+}
+
+div#sonstpremie_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:350px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#dperszuschlag_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:1000px;
+/*    height:150px;*/
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#sonstpremie_zeitraum{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: silver;
+}
+
+div#abmahnung_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+/*    width:850px;*/
+    height:400px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    border:4px solid #000;
+    background-color:#dfd;
+    font-size:10px;
+    padding: 10px;
+}
+
+div#verletzung_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:550px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#faehigkeiten_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:1000px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:8px;
+}
+
+div#vertrag_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:750px;
+    height:300px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:8px;
+    opacity:0.85;
+}
+
+div#schulungen_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:300px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#abmahnung_zeitraum{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: silver;
+}
+
+div#anwesenheit_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:400px;
+    height:400px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+div#edataanwtable{
+    position:absolute;
+    top:200px;
+    left:0px;
+    width:100%;
+/*    height:400px;*/
+    bottom: 0px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#fff;
+    font-size:13px;
+}
+
+div#persnrkopieren_table{
+    position:absolute;
+    top:0px;
+    left:0px;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+    padding: 10px;
+}
+
+div#anwesenheit_zeitraum{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 3px;
+    background-color: silver;
+}
+
+div#vzkdplantable{
+    border: 2px solid green;
+    background: lightyellow;
+    width: 100%;
+/*    height: 300px;*/
+    overflow: auto;
+/*    visibility: hidden;*/
+}
+
+div#vzkdplantable td.arbeitstag{
+    background: lightyellow;
+}
+
+div#vzkdplantable td.noarbeitstag{
+    background: lightcoral;
+}
+
+div#vzkdplantable th.arbeitstag{
+    background: lightyellow;
+}
+
+div#vzkdplantable th.noarbeitstag{
+    background: lightcoral;
+}
+
+div#vzkdplantable table{
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+div#vzkdplantable td{
+    white-space: nowrap;
+}
+.floatinputbox{
+    text-align: right;
+}
+
+div#persnrauswaehlen{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:400px;
+    height:200px;
+    overflow:auto;
+    border:2px solid green;
+    background-color:#dfd;
+    font-size:10px;
+}
+
+#navigace ul{
+    display: block;
+    list-style: none;
+}
+
+#navigace ul li{
+    display: inline;
+    border: 1px solid black;
+    margin-right: 3px;
+    padding: 3px;
+    text-decoration: none;
+    background-color: #e3e9ba;
+}
+
+div.menudiv{
+    border: 1px solid black;
+    width:400px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 30px;
+    background-color: #e3e9ba;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+#form_personalmenu {
+    display: block;
+    list-style: none;
+}
+
+#form_personalmenu li{
+    display: block;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 3px;
+    text-decoration: none;
+    background-color: #e3e9ba;
+    width: 450px;
+    height: 30px;
+    text-align: center;
+}
+
+#presenterinfo a{
+    border: 1px solid black;
+    margin: 3px;
+    margin-top: 5px;
+    padding: 3px;
+    text-decoration: none;
+    background-color: #e3e9ba;
+}
+
+div#bewerberformular{
+    position: absolute;
+    width: 95%;
+    height: 600px;
+    background-color: #ddffdd;
+    border: 2px solid green;
+    opacity:0.95;
+    z-index: 999;
+}
+
+/* css pro taby */
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+}
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: #e0e0e0;
+}
+ul.tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	outline: none;
+}
+ul.tabs li a:hover {
+	background: #ccc;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #fff;
+	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	overflow: hidden;
+	clear: both;
+	float: left; width: 100%;
+	background: #fff;
+}
+.tab_content {
+	padding: 20px;
+/*	font-size: 1.2em;*/
+}
+
+.persfindenform{
+    width:70%;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    border: 2px solid #333;
+    font-size: large;
+    font-weight: bold;
+}

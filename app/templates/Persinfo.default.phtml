@@ -1,0 +1,700 @@
+<script type="text/javascript" src="{$baseUri}js/persinfo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+   //*** UPLOADER *****************************************************************
+	var uploader = new plupload.Uploader({
+	    runtimes: 'html5,flash,browserplus',
+	    flash_swf_url: '{!$baseUri}plupload/js/plupload.flash.swf',
+	    browse_button: 'pickfiles',
+	    container: 'uploader',
+	    //url: '{!$baseUri}upload.php?savepath={!$savePath}'
+	    url: '{!$baseUri}upload.php?savepath='+$('#dokumente_savePath').val()
+	});
+    
+	uploader.init();
+	uploader.bind('FilesAdded', function(up, files) {
+	    $.each(files, function(i, file) {
+		$('#filelist').append(
+		    '<div id="' + file.id + '">' +
+		    file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' + '</div>');
+	    });
+	    up.start();
+	});
+
+	uploader.bind('UploadProgress', function(up, file) {
+	    $('#' + file.id + " b").html(file.percent + "%");
+	});
+
+	uploader.bind('Error', function(up, err) {
+	    $('#filelist').append("<div>Error: " + err.code +
+            ", popis chyby: " + err.message +
+            (err.file ? ", soubor: " + err.file.name : "") +
+            "</div>"
+	    );
+	    up.refresh(); // Reposition Flash/Silverlight
+	});
+	uploader.bind('FileUploaded', function(up, file) {
+	    //$('#' + file.id + " b").html("uloženo");
+	    $('#' + file.id).remove();
+	    //var acturl = '{!$acturl}';
+	    var acturl = $('#dokumente_acturl').val();
+
+	    $.post(acturl,
+	    {
+		//persnr:'{!$persnr}'
+		persnr:$('#dokumente_persnr').val()
+	    },
+	    function(data){
+		updateNewFileTable(data);
+	    },
+	    'json'
+	    );    
+	});
+
+});	
+//** UPLOADER END **************************************************************
+
+</script>
+<!--<div id="debuginfo" class="{$secclasses['lesen'][$form_id.'_debuginfo']}">
+    {!$debuginfo}
+</div>-->
+
+<div>
+        &nbsp;{$form['bt_persnrkopieren']->control}
+        &nbsp;{$form['bt_persnrdelete']->control}
+</div>
+<div class="persfindenform">
+                        <span class="fieldlabel">PersNr</span>
+                        <span class="formularcontrol">{$form['persnr']->control}</span>
+                        <span class="formularcontrol">{$form['vor_persnr']->control}</span>
+                        <span class="formularcontrol">{$form['nach_persnr']->control}</span>
+                        <span class="fieldlabel">{$form['aktive_MA']->label}</span>
+                        <span class="formularcontrol">{$form['aktive_MA']->control}</span>
+                        <span style="font-size:8px;">Mitarbeiter suchen ( Name&nbsp; <span class="formularcontrol">{$form['namesuchen']->control}</span>&nbsp;)</span>
+</div>
+
+<ul class="tabs">
+    <li><a href="#tab_grundinfo">Grundinfo</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_aplinfoTAB']}" id="{$form_id}_aplinfoTAB"><a href="#tab_aplinfo">Aplinfo</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_lohninfoTAB']}" id="{$form_id}_lohninfoTAB"><a href="#tab_lohninfo">Lohninfo</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_ausbildungTAB']}" id="{$form_id}_ausbildungTAB"><a href="#tab_ausbildung">Ausbildung / Schulung</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_sicherheitTAB']}" id="{$form_id}_sicherheitTAB"><a href="#tab_sicherheit">Arbeitssicherheit</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_bewerberTAB']}" id="{$form_id}_bewerberTAB"><a href="#tab_bewerber">Bewerber</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_sonstTAB']}" id="{$form_id}_sonstTAB"><a href="#tab_sonst">Sonstiges</a></li>
+    <li class="{$secclasses['lesen'][$form_id.'_dokumenteTAB']}" id="{$form_id}_dokumenteTAB"><a href="#tab_dokumente">Dokumente</a></li>
+</ul>
+
+<div class="tab_container">
+
+<div id="tab_grundinfo" class="tab_content">
+<div class="formulardiv">
+    <div class="formularcaption">
+        <div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
+    </div>
+    <div class="formularbody">
+        <div class="bottomButton">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+   <hr style="clear:both;visibility: hidden;"/>
+        <div class="formularfieldset" id="grundinfo">
+            <h1>Grundinfo</h1>
+            <table>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">Pers Status</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['dpersstatus']->control}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['name']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['name']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['vorname']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['vorname']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['abkrz']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['abkrz']->control}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['tf_eintrittsdatum']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['tf_eintrittsdatum']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['tf_austritt']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['tf_austritt']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['tf_geboren']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['tf_geboren']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['gebort']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['gebort']->control}</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['dobaurcita']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['dobaurcita']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['zkusebni_doba_dobaurcita']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['zkusebni_doba_dobaurcita']->control}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['vertrag']->control}</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['leistungAktMonat']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['leistungAktMonat']->control}</span>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="formularfieldset" id="zusatzinfo">
+            <h1>Zusatzinfo</h1>
+            <table>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['tf_handy']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['tf_handy']->control}</span>
+                    </td>
+                </tr>
+                <tr>
+                   <td>
+                        <span class="fieldlabel">{$form['schrank']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['schrank']->control}</span>
+                    </td>
+                   <td>
+                        <span class="fieldlabel">{$form['umkleidenr']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['umkleidenr']->control}</span>
+                    </td>
+                   <td>
+                        <span class="fieldlabel">{$form['schuhe']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['schuhe']->control}</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['regeltrans']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['regeltrans']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['kfz_rz']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['kfz_rz']->control}</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['tf_ort']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['tf_ort']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['plz']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['plz']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['strasse']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['strasse']->control}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['ort_op']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['ort_op']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['plz_op']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['plz_op']->control}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['strasse_op']->label}</span>
+                    </td>
+                    <td>
+                        <span class="formularcontrol">{$form['strasse_op']->control}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="fieldlabel">{$form['staats_angehoerigkeit_id']->label}</span>
+                    </td>
+                    <td>
+                        <span class="fieldlabel">{$form['staats_angehoerigkeit_id']->control}</span>
+                    </td>
+                </tr>
+            </table>
+            
+            
+        </div>
+    </div>
+</div>
+
+<!--    konec tab_grundinfo-->
+</div>
+
+    <div id="tab_aplinfo" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+                <div class="bottomButton">
+                    <ul>
+                        <li><span class="formularcontrol">{$form['dpersstempel']->control}</span></li>
+                    </ul>
+                </div>
+
+                <div class="formularfieldset" id="aplinfo">
+                    <h1>Aplinfo</h1>
+                    <table>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['schicht']->label}</span></td><td><span class="formularcontrol">{$form['schicht']->control}</span></td>
+        <!--                    <td><span class="fieldlabel">{$form['einsatzschicht']->label}</span></td><td><span class="formularcontrol">{$form['einsatzschicht']->control}</span></td> -->
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['regelarbeit']->label}</span></td><td><span class="formularcontrol">{$form['regelarbeit']->control}</span></td>
+                            <td title="ungerade Woche"><span class="fieldlabel">{$form['cb_regeloe']->label}</span></td><td><span class="formularcontrol">{$form['cb_regeloe']->control}</span></td>
+                            <td title="gerade Woche"><span class="fieldlabel">{$form['cb_alteroe']->label}</span></td><td><span class="formularcontrol">{$form['cb_alteroe']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['anwvzkd_faktor']->label}</span></td><td><span class="formularcontrol">{$form['anwvzkd_faktor']->control}</span></td>
+
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['autoleistung']->label}</span></td><td><span class="formularcontrol">{$form['autoleistung']->control}</span></td>
+			    <td><span class="fieldlabel">{$form['cb_auto_leistung_abgnr']->label}</span></td><td><span class="formularcontrol">{$form['cb_auto_leistung_abgnr']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['kor']->label}</span></td><td><span class="formularcontrol">{$form['kor']->control}</span> (im S132 wird nicht angezeigt)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tab_lohninfo" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+                <div class="bottomButton">
+                    <ul>
+                        <li><span class="formularcontrol">{$form['anwesenheit']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['vorschuss']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['sonstpremie']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['dperszuschlag']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['abmahnung']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['essen']->control}</span></li>
+                        <li><span class="formularcontrol">{$form['transport']->control}</span></li>
+                    </ul>
+                </div>
+
+                <div class="formularfieldset {$secclasses['lesen'][$form_id.'_lohninfo']}" id="lohninfo">
+                    <h1>Lohninfo</h1>
+                    <table border="0">
+                        <tr>
+                            <td><span class="fieldlabel">{$form['premie_za_vykon']->label}</span></td><td><span class="formularcontrol">{$form['premie_za_vykon']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['qpremie_akkord']->label}</span></td><td><span class="formularcontrol">{$form['qpremie_akkord']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['premie_za_prasnost']->label}</span></td><td><span class="formularcontrol">{$form['premie_za_prasnost']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['premie_za_3_mesice']->label}</span></td><td><span class="formularcontrol">{$form['premie_za_3_mesice']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><span class="fieldlabel">{$form['qpremie_zeit']->label}</span></td><td><span class="formularcontrol">{$form['qpremie_zeit']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['bewertung']->label}</span></td><td><span class="formularcontrol">{$form['bewertung']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['MAStunden']->label}</span></td><td><span class="formularcontrol">{$form['MAStunden']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['einarb_zuschlag']->label}</span></td><td><span class="formularcontrol">{$form['einarb_zuschlag']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['lohnfaktor']->label}</span></td><td><span class="formularcontrol">{$form['lohnfaktor']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['leistfaktor']->label}</span></td><td><span class="formularcontrol">{$form['leistfaktor']->control}</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Urlaub</td>
+                        </tr>
+                        <tr>
+                            <td><span class="fieldlabel">{$form['jahranspruch']->label}</span></td><td><span class="fieldlabel">{$form['jahranspruch']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['rest']->label}</span><span class="fieldlabel">{$form['rest']->control}</span></td>
+                            <td><span class="fieldlabel">{$form['gekrzt']->label}</span></td><td><span class="fieldlabel">{$form['gekrzt']->control}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tab_ausbildung" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+                <div class="bottomButton">
+                    <ul>
+                        <li><span class="formularcontrol">{$form['faehigkeiten']->control}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab_sicherheit" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+                <div class="bottomButton">
+                    <ul>
+                        <li><span class="formularcontrol">{$form['verletzung']->control}</span></li>
+                    </ul>
+                </div>
+
+                <div class="formularfieldset" id="arbsicherheit">
+                    <h1>Arbeitssicherheit</h1>
+                    <table border="0">
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['artzt_eingang_untersuchung']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['artzt_eingang_untersuchung']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['aktual_info_bemerkung']->label}</span>
+                            </td>
+                            <td colspan="3">
+                                <span class="fieldlabel">{$form['aktual_info_bemerkung']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['artzt_ausgang']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['artzt_ausgang']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['berufskrankheit_gefahr']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['berufskrankheit_gefahr']->control}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab_bewerber" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+<!--                <div class="bottomButton">
+                    <ul>
+                        <li><span class="formularcontrol">{$form['bt_bewerberform_show']->control}</span></li>
+                    </ul>
+                </div>-->
+                <div class="formularfieldset" id="bewerber_vor_eintritt">
+                    <h1>Vor dem Eintritt</h1>
+                    <table border="0">
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['bewerb_datum']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['bewerb_datum']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['eigen_transport_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['transport_id']->control}</span>
+                                <span class="fieldlabel">{$form['eigen_transport_id']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['eintritt_datum']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['eintritt_datum']->control}</span>
+                            </td>
+
+                            <td>
+                                <span class="fieldlabel">{$form['oe_voraussichtlich']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['oe_voraussichtlich']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">Bewertung 1/2/3</span>
+                            </td>
+                            <td>
+                                <span title="1.physisch" class="fieldlabel">{$form['bewertung1']->control}</span>
+                                <span title="2.arb. Erfahrung" class="fieldlabel">{$form['bewertung2']->control}</span>
+                                <span title="3.arb. Interesse" class="fieldlabel">{$form['bewertung3']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['bewertung_bemerkung']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['bewertung_bemerkung']->control}</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['bemerkung_sonst']->label}</span>
+                            </td>
+                            <td colspan="3">
+                                <span class="fieldlabel">{$form['bemerkung_sonst']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['nicht_eingetretten_grund_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['nicht_eingetretten_grund_id']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['info_vom_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['info_vom_id']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['geeignet_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['geeignet_id']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['bew_geeignet_aktual_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['bew_geeignet_aktual_id']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_recht_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_recht_id']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_real_id']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_real_id']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['erledigt']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['erledigt']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['abydos_agentur']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['abydos_agentur']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['vertragb']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['vertragb']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['gestraft']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['gestraft']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['arbamt_evidenz']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['arbamt_evidenz']->control}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['vom_arb_amt_gekommen']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['vom_arb_amt_gekommen']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['exekution']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['exekution']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['wettbewerb_1000_CZK']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['wettbewerb_1000_CZK']->control}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_vom']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['beendet_vom']->control}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="fieldlabel">{$form['ausgang_bemerkung']->label}</span>
+                            </td>
+                            <td>
+                                <span class="fieldlabel">{$form['ausgang_bemerkung']->control}</span>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="tab_sonst" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+            </div>
+        </div>
+    </div>
+
+    <div id="tab_dokumente" class="tab_content">
+        <div class="formulardiv">
+            <div class="formularcaption">
+                <div class="persid"></div>
+            </div>
+            <div class="formularbody">
+		<input type="hidden" id="dokumente_savePath" value="{$savePath}" />
+		<input type="hidden" id="dokumente_persnr" value="{$persnr}" />
+		<input type="hidden" id="dokumente_acturl" value="{!$acturl}" />
+		<fieldset id="fs_madokumente">
+		    <legend>MA Dokumente</legend>
+		    <div id="dokumente_uploader">
+			{!$uploader}
+		    </div>
+		    <div id="doklady_table_div">
+			{!$dokumentyTable}
+		    </div>
+		</fieldset>
+		<fieldset id="fs_templatesdokumente">
+		    <legend>Dokumente - Templates</legend>
+		    <div id="dokumente_templates">
+			<input type="button" id="makePersDoku" acturl="{!$acturl_makePersDoku}" value="Template->Personal Doku" />
+			<span class="dokumentpath">{$templatespath}</span>
+			{!$templatestable}
+			<span id="varHelp">Variables - Help</span>
+			<div id="varTable">
+			    {!$varTable}
+			</div>
+		    </div>
+		</fieldset>
+            </div>
+        </div>
+    </div>
+
+
+<!--    konec tab_container-->
+</div>

@@ -1,0 +1,40 @@
+10
+
+dir
+4
+svn+ssh://htpc/media/a7a9f76c-f6a5-4e1f-b497-14dec011e2b4/archiv/svn/repos/aplnew
+svn+ssh://htpc/media/a7a9f76c-f6a5-4e1f-b497-14dec011e2b4/archiv/svn/repos
+
+
+
+2011-08-31T11:58:36.380575Z
+4
+pepa
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4949dc3e-996c-4b57-b78b-a52be4508b0b
+
+app
+dir
+
+doc_root
+dir
+
+nbproject
+dir
+
+sql
+dir
+
