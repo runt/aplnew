@@ -1421,8 +1421,8 @@ public function actionAnwesenheitZeitraumSet($id,$persnr,$value,$jahr,$monat) {
 		    $divcontent.="<td><input id='abmahnung_vorschlag_von_".$abmahnung['id']."' type='text' size='3' maxlength='5'  acturl='".$this->link('abmahnungUpdate')."' value='".$abmahnung['vorschlag_von']."' /></td>";
 		    $divcontent.="<td><input id='abmahnung_vorschlag_betrag_".$abmahnung['id']."' type='text' size='5' maxlength='5'  acturl='".$this->link('abmahnungUpdate')."' value='".$abmahnung['vorschlag_betrag']."' /></td>";
 		    $divcontent.="<td><input id='abmahnung_vorschlag_bemerkung_".$abmahnung['id']."' type='text' size='20' maxlength='50'  acturl='".$this->link('abmahnungUpdate')."' value='".$abmahnung['vorschlag_bemerkung']."' /></td>";
-		    
                     $divcontent.="<td><input type='button' value='-' id='abmahnung_delete_".$abmahnung['id']."' acturl='".$this->link('abmahnungDeleteId')."' /></td>";
+		    $divcontent.="<td><a href='../../abmahnunggen/abmahnunggen.php#/form/".$abmahnung['id']."' target='_blank' title='vytvořit a uložit PDF výtku'>V</a></td>";
                 $divcontent.="</tr>";
             }
         }
