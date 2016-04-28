@@ -423,6 +423,7 @@ public function getArbTageZuschlagArray($persnr) {
             $sql.=" ,dpers.regelarbzeit";
             $sql.=" ,dpers.auto_leistung";
             $sql.=" ,dpers.komm_ort";
+	    $sql.=" ,dpers.email";
             $sql.=" ,dpers.regeloe";
             $sql.=" ,dpers.alteroe";
             $sql.=" ,dpers.premie_za_vykon";
@@ -550,6 +551,7 @@ public function getArbTageZuschlagArray($persnr) {
             $sql.=" ,dpers.auto_leistung";
 	    $sql.=" ,dpers.auto_leistung_abgnr";
             $sql.=" ,dpers.kor";
+	    $sql.=" ,dpers.email";
             $sql.=" ,dpers.komm_ort";
             $sql.=" ,dpers.regeloe";
             $sql.=" ,dpers.alteroe";
@@ -558,6 +560,8 @@ public function getArbTageZuschlagArray($persnr) {
             $sql.=" ,dpers.qpremie_zeit";
             $sql.=" ,dpers.premie_za_prasnost";
             $sql.=" ,dpers.premie_za_3_mesice";
+	    $sql.=" ,dpers.a_praemie";
+	    $sql.=" ,dpers.a_praemie_st";
             $sql.=" ,dpers.bewertung";
             $sql.=" ,dpers.MAStunden";
             $sql.=" ,dpers.einarb_zuschlag";

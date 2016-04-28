@@ -17,7 +17,10 @@ class Benutzer extends Object implements IAuthenticator
 	public function authenticate(array $credentials)
 	{
 		$username = strtolower($credentials[self::USERNAME]);
-		$password = strtolower($credentials[self::PASSWORD]);
+		// kvuli heslum, ktera obsahuja mala i velka pismena nebudu prevadet jen na mala
+		// 2016-02-29
+		//$password = strtolower($credentials[self::PASSWORD]);
+		$password = trim($credentials[self::PASSWORD]);
 
         $apl = new AplModel();
         $row = $apl->getBenutzerRow($username,$password);

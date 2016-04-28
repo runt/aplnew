@@ -429,7 +429,14 @@ class FormPersinfo extends Form {
             'type'=>'text',
             'dbfield'=>'kom7',
             ),
-
+	'tf_email'=>array(
+            'bezeichnung'=>'Email',
+            'secured'=>false,
+            'size'=>32,
+            'maxlength'=>255,
+            'type'=>'text',
+            'dbfield'=>'email',
+            ),
         'strasse'=>array(
             'bezeichnung'=>'Strasse aktuell',
             'secured'=>TRUE,
@@ -596,6 +603,19 @@ class FormPersinfo extends Form {
             'secured'=>false,
             'type'=>'checkbox',
             'dbfield'=>'MAStunden',
+            ),
+	
+        'a_praemie'=>array(
+            'bezeichnung'=>'A-Praemie',
+            'secured'=>false,
+            'type'=>'checkbox',
+            'dbfield'=>'a_praemie',
+            ),
+	'a_praemie_st'=>array(
+            'bezeichnung'=>'A-Praemie-St',
+            'secured'=>false,
+            'type'=>'checkbox',
+            'dbfield'=>'a_praemie_st',
             ),
 
         'einarb_zuschlag'=>array(

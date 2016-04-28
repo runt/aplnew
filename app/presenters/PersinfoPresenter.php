@@ -82,6 +82,7 @@ class PersinfoPresenter extends BasePresenter{
             'schuhe'=>$this->link('updateDpersDetailField'),
             'tf_ort'=>$this->link('updateDpersField'),
             'tf_handy'=>$this->link('updateDpersDetailField'),
+	    'tf_email'=>$this->link('updateDpersField'),
             'schicht'=>$this->link('updateDpersField'),
             'einsatzschicht'=>$this->link('updateDpersField'),
             'regelarbeit'=>$this->link('updateDpersField'),
@@ -98,6 +99,8 @@ class PersinfoPresenter extends BasePresenter{
             'premie_za_prasnost'=>$this->link('updateDpersField'),
             'premie_za_3_mesice'=>$this->link('updateDpersField'),
             'MAStunden'=>$this->link('updateDpersField'),
+	    'a_praemie'=>$this->link('updateDpersField'),
+	    'a_praemie_st'=>$this->link('updateDpersField'),
             'einarb_zuschlag'=>$this->link('updateDpersField'),
             'bewertung'=>$this->link('updateDpersField'),
             'lohnfaktor'=>$this->link('updateDpersField'),
@@ -1367,7 +1370,7 @@ public function actionAnwesenheitZeitraumSet($id,$persnr,$value,$jahr,$monat) {
         if($abmahnungArray!=NULL){
             foreach ($abmahnungArray as $abmahnung){
                 $divcontent.="<tr id='abmahnungrow_".$abmahnung['id']."'>";
-                    $divcontent.="<td>".$abmahnung['datum']."</td>";
+                    $divcontent.="<td>".$abmahnung['datum']."&nbsp;&nbsp;&nbsp;"."<a href='../../abmahnunggen/abmahnunggen.php#/form/".$abmahnung['id']."' target='_blank' title='vytvořit a uložit PDF výtku'>V</a>"."</td>";
                     $grundSelect = "<select id='abmahnung_grund_".$abmahnung['id']."' acturl='".$this->link('abmahnungGrundUpdate')."'>";
                     $grundInfoArray = $this->model->getAbmahnungGrundInfoArray();
                     $flag_noselected = TRUE;
@@ -1395,25 +1398,31 @@ public function actionAnwesenheitZeitraumSet($id,$persnr,$value,$jahr,$monat) {
                     $reklamationSelect = "<select id='abmahnung_reklamation_".$abmahnung['id']."' acturl='".$this->link('abmahnungReklamationUpdate')."'>";
 		    $selected = FALSE;
 		    $noReklAdded = FALSE;
+		    $reklNr = "---";
                     foreach ($reklamationInfoArray as $reklamationInfo) {
 			if (($abmahnung['dreklamation_id'] != 0)&&(!$noReklAdded)) {
 			    $reklamationSelect.="<option value='0'>----------</option>";
+			    $reklNr = "---";
 			    $noReklAdded = TRUE;
 			}
 			if (($abmahnung['dreklamation_id'] == 0)&&(!$selected)) {
 			    $reklamationSelect.="<option selected='selected' value='0'>----------</option>";
 			    $selected = TRUE;
+			    $reklNr = "---";
 			}
 			if (($reklamationInfo['id'] == $abmahnung['dreklamation_id']) && (!$selected)) {
 			    $reklamationSelect.="<option selected='selected' value='" . $reklamationInfo['id'] . "'>" . $reklamationInfo['rekl_nr'] . "</option>";
 			    $selected = TRUE;
+			    $reklNr = $reklamationInfo['rekl_nr'];
 			} else {
 			    $reklamationSelect.="<option value='" . $reklamationInfo['id'] . "'>" . $reklamationInfo['rekl_nr'] . "</option>";
+			    //$reklNr = $reklamationInfo['rekl_nr'];
 			}
 		    }
 		    $reklamationSelect.= "</select>";
 
-                    $divcontent.="<td>".$reklamationSelect."</td>";
+//                    $divcontent.="<td>".$reklamationSelect."</td>";
+		    $divcontent.="<td>".$reklNr."</td>";
 		    //--------------------------------------------------------------------------------
 		    // vorschlag
 		    $checkedVorschlag = $abmahnung['vorschlag']==0?'':"checked='checked'";		    
@@ -1422,7 +1431,7 @@ public function actionAnwesenheitZeitraumSet($id,$persnr,$value,$jahr,$monat) {
 		    $divcontent.="<td><input id='abmahnung_vorschlag_betrag_".$abmahnung['id']."' type='text' size='5' maxlength='5'  acturl='".$this->link('abmahnungUpdate')."' value='".$abmahnung['vorschlag_betrag']."' /></td>";
 		    $divcontent.="<td><input id='abmahnung_vorschlag_bemerkung_".$abmahnung['id']."' type='text' size='20' maxlength='50'  acturl='".$this->link('abmahnungUpdate')."' value='".$abmahnung['vorschlag_bemerkung']."' /></td>";
                     $divcontent.="<td><input type='button' value='-' id='abmahnung_delete_".$abmahnung['id']."' acturl='".$this->link('abmahnungDeleteId')."' /></td>";
-		    $divcontent.="<td><a href='../../abmahnunggen/abmahnunggen.php#/form/".$abmahnung['id']."' target='_blank' title='vytvořit a uložit PDF výtku'>V</a></td>";
+//		    $divcontent.="<td><a href='../../abmahnunggen/abmahnunggen.php#/form/".$abmahnung['id']."' target='_blank' title='vytvořit a uložit PDF výtku'>V</a></td>";
                 $divcontent.="</tr>";
             }
         }
@@ -2180,7 +2189,7 @@ public function actionUpdateDBewerbDatumField($id,$persnr,$field,$value) {
         $abgnrvalues = Utility::getArrayWithKey('abgnr', $abgnrArray);
 
         //bewertung1
-        $bewArray =  array(0,1,3,4,5,6,7,8,9,10);
+        $bewArray =  array(0,1,2,3,4,5,6,7,8,9,10);
         $bew1SelectItems = new SelectItemsModel($persinfo['bewertung1'], $bewArray,$bewArray);
         $persinfo['bewertung1'] = $bew1SelectItems->getSelectItemsArray();
 
@@ -2425,7 +2434,7 @@ public function actionUpdateDBewerbDatumField($id,$persnr,$field,$value) {
         $persinfo['transport_id'] = $tiSelectItems->getSelectItemsArray();
 
         //bewertung1
-        $bewArray =  array(0,1,3,4,5,6,7,8,9,10);
+        $bewArray =  array(0,1,2,3,4,5,6,7,8,9,10);
         $bew1SelectItems = new SelectItemsModel($persinfo['bewertung1'], $bewArray,$bewArray);
         $persinfo['bewertung1'] = $bew1SelectItems->getSelectItemsArray();
 

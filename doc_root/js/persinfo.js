@@ -106,6 +106,10 @@ $(document).ready(function(){
     });
 
 
+    //kdyz a_premie neni checked tak zakazu a_premie_st
+    if(!$('#frmpersinfo-a_praemie').attr('checked')){
+	$('#frmpersinfo-a_praemie_st').attr('disabled','disabled');
+    }
 
     // zobrazit tlacitko pro bewerbeformular jen v pripade ze dpersstatus u persnr je roven BEWERBER
     dpersstatus = $('#frmpersinfo-dpersstatus').val();
@@ -1249,6 +1253,24 @@ $('#frmpersinfo-tf_handy').change(function(event){
         'json'
         );
     });
+    
+    $('#frmpersinfo-tf_email').change(function(event){
+        var id = $(this).attr('id');
+        var acturl = $(this).attr('acturl');
+        var value = $(this).val();
+        $.post(acturl,
+        {
+            id:id,
+            persnr: $('#frmpersinfo-persnr').val(),
+            field: 'email',
+            value: $(this).val()
+        },
+        function(data){
+            updateUpdateDpersField(data);
+        },
+        'json'
+        );
+    });
 
     $('#frmpersinfo-schicht').change(function(event){
         var id = $(this).attr('id');
@@ -1575,6 +1597,65 @@ $('#frmpersinfo-cb_alteroe').change(function(event){
             id:id,
             persnr: $('#frmpersinfo-persnr').val(),
             field: 'MAStunden',
+            value: value
+        },
+        function(data){
+            updateUpdateDpersField(data);
+        },
+        'json'
+        );
+    });
+    
+    $('#frmpersinfo-a_praemie').click(function(event){
+        var id = $(this).attr('id');
+        var acturl = $(this).attr('acturl');
+        var value = $(this).attr('checked')?1:0;
+	
+	if(value==0){
+	    //st premie musi byt take 0 a navic checkbox zakazu
+	    $('#frmpersinfo-a_praemie_st').attr('checked','');
+	    $.post(acturl,
+	    {
+		id:'#frmpersinfo-a_praemie_st',
+		persnr: $('#frmpersinfo-persnr').val(),
+		field: 'a_praemie_st',
+		value: 0
+	    },
+	    function(data){
+                updateUpdateDpersField(data);
+            },
+            'json'
+            );
+	    //a zakazat
+	    $('#frmpersinfo-a_praemie_st').attr('disabled','disabled');
+	}
+	else{
+	    $('#frmpersinfo-a_praemie_st').attr('disabled','');
+	}
+	
+        $.post(acturl,
+        {
+            id:id,
+            persnr: $('#frmpersinfo-persnr').val(),
+            field: 'a_praemie',
+            value: value
+        },
+        function(data){
+            updateUpdateDpersField(data);
+        },
+        'json'
+        );
+    });
+    
+    $('#frmpersinfo-a_praemie_st').click(function(event){
+        var id = $(this).attr('id');
+        var acturl = $(this).attr('acturl');
+        var value = $(this).attr('checked')?1:0;
+        $.post(acturl,
+        {
+            id:id,
+            persnr: $('#frmpersinfo-persnr').val(),
+            field: 'a_praemie_st',
             value: value
         },
         function(data){
