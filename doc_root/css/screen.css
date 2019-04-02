@@ -670,9 +670,10 @@ div#vertrag_table{
     position:absolute;
     top:0px;
     left:0px;
-    width:750px;
+    /*width:750px;*/
     height:300px;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:hidden;
     border:2px solid green;
     background-color:#dfd;
     font-size:8px;

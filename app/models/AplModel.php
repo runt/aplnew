@@ -6,7 +6,6 @@
  * @author runt
  */
 class AplModel extends Object{
-
         const TABLE_USERROLES = 'dbenutzerroles';
         const TABLE_ROLES = 'roles';
         const TABLE_RESOURCES = 'resources';
@@ -244,7 +243,7 @@ public function getArbTageZuschlagArray($persnr) {
             return NULL;
     }
 
-    public function getPlanStundenArray($persnr,$planoe,$datumvon,$days){
+    public function getPlanStundenArray($persnr,$planoe,$datumvon,$days,$nurMA=FALSE){
 
     if(strlen(trim($planoe))==0 || strlen(trim($datumvon))==0) return NULL;
 
@@ -257,6 +256,10 @@ public function getArbTageZuschlagArray($persnr) {
     $sql .=" where ".self::TABLE_DZEITSOLL.".datum between '$datumvon' and ADDDATE('$datumvon',$days) and ".self::TABLE_DZEITSOLL.".oe like '$planoe'";
     if(strlen(trim($persnr))>0)
         $sql .=" and ".self::TABLE_DPERS.".persnr='$persnr'";
+    if($nurMA===TRUE){
+	$sql .=" and ".self::TABLE_DPERS.".dpersstatus='MA'";
+    }
+    
     $sql .=" group by ".self::TABLE_DZEITSOLL.".persnr,".self::TABLE_DZEITSOLL.".datum;";
 
     //echo $sql;
@@ -568,6 +571,7 @@ public function getArbTageZuschlagArray($persnr) {
             $sql.=" ,dpers.lohnfaktor";
             $sql.=" ,dpers.leistfaktor";
             $sql.=" ,dpers.anwvzkd_faktor";
+	    $sql.=" ,dpers.anwgruppe";
             $sql.=" ,DATE_FORMAT(".self::TABLE_DPERSDETAIL.".dobaurcita,'%d.%m.%Y') as dobaurcita";
             $sql.=" ,DATE_FORMAT(".self::TABLE_DPERSDETAIL.".zkusebni_doba_dobaurcita,'%d.%m.%Y') as zkusebni_doba_dobaurcita";
             $sql.=" ,".self::TABLE_DPERSDETAIL.".strasse";
@@ -2322,8 +2326,9 @@ public function getFirstPersNrFromDpers($active=TRUE,$vonPersNr=0) {
                     $cislotydne = date('W',mktime(0, 1, 1, $monat, $i, $jahr));
                     $lichyTyden = $cislotydne%2==0?FALSE:TRUE;
 
-                    if($cislodne==0 || $cislodne==6 || $svatek!=false)
-                        $sqlinsert = "insert into dzeitsoll (persnr,datum,oe,stunden) values('$persnr','$datumStr','-',0)";
+		    if($cislodne==0 || $cislodne==6 || $svatek!==FALSE){
+			$sqlinsert = "insert into dzeitsoll (persnr,datum,oe,stunden) values('$persnr','$datumStr','-',0)";
+		    }
                     else{
                         // kontrola na datum nastupu
                         // pred datumem nastupu vlozim jen '-'

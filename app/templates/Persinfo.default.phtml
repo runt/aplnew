@@ -74,19 +74,19 @@
 </div>
 
 <ul class="tabs">
-    <li><a href="#tab_grundinfo">Grundinfo</a></li>
-    <li class="{$secclasses['lesen'][$form_id.'_aplinfoTAB']}" id="{$form_id}_aplinfoTAB"><a href="#tab_aplinfo">Aplinfo</a></li>
+    <!--<li><a href="#tab_grundinfo">Grundinfo</a></li>-->
+    <!--<li class="{$secclasses['lesen'][$form_id.'_aplinfoTAB']}" id="{$form_id}_aplinfoTAB"><a href="#tab_aplinfo">Aplinfo</a></li>-->
     <li class="{$secclasses['lesen'][$form_id.'_lohninfoTAB']}" id="{$form_id}_lohninfoTAB"><a href="#tab_lohninfo">Lohninfo</a></li>
     <li class="{$secclasses['lesen'][$form_id.'_ausbildungTAB']}" id="{$form_id}_ausbildungTAB"><a href="#tab_ausbildung">Ausbildung / Schulung</a></li>
     <li class="{$secclasses['lesen'][$form_id.'_sicherheitTAB']}" id="{$form_id}_sicherheitTAB"><a href="#tab_sicherheit">Arbeitssicherheit</a></li>
-    <li class="{$secclasses['lesen'][$form_id.'_bewerberTAB']}" id="{$form_id}_bewerberTAB"><a href="#tab_bewerber">Bewerber</a></li>
-    <li class="{$secclasses['lesen'][$form_id.'_sonstTAB']}" id="{$form_id}_sonstTAB"><a href="#tab_sonst">Sonstiges</a></li>
-    <li class="{$secclasses['lesen'][$form_id.'_dokumenteTAB']}" id="{$form_id}_dokumenteTAB"><a href="#tab_dokumente">Dokumente</a></li>
+    <!--<li class="{$secclasses['lesen'][$form_id.'_bewerberTAB']}" id="{$form_id}_bewerberTAB"><a href="#tab_bewerber">Bewerber->Austritt</a></li>-->
+    <!--<li class="{$secclasses['lesen'][$form_id.'_sonstTAB']}" id="{$form_id}_sonstTAB"><a href="#tab_sonst">Sonstiges</a></li>-->
+    <!--<li class="{$secclasses['lesen'][$form_id.'_dokumenteTAB']}" id="{$form_id}_dokumenteTAB"><a href="#tab_dokumente">Dokumente</a></li>-->
 </ul>
 
 <div class="tab_container">
 
-<div id="tab_grundinfo" class="tab_content">
+<!--<div id="tab_grundinfo" class="tab_content">
 <div class="formulardiv">
     <div class="formularcaption">
         <div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
@@ -97,8 +97,8 @@
                 <li></li>
             </ul>
         </div>
-   <hr style="clear:both;visibility: hidden;"/>
-        <div class="formularfieldset" id="grundinfo">
+   <hr style="clear:both;visibility: hidden;"/>-->
+<!--        <div class="formularfieldset" id="grundinfo">
             <h1>Grundinfo</h1>
             <table>
                 <tr>
@@ -184,9 +184,9 @@
 
                 </tr>
             </table>
-        </div>
+        </div>-->
 
-        <div class="formularfieldset" id="zusatzinfo">
+<!--        <div class="formularfieldset" id="zusatzinfo">
             <h1>Zusatzinfo</h1>
             <table>
                 <tr>
@@ -290,17 +290,18 @@
             </table>
             
             
-        </div>
-    </div>
+        </div>-->
+<!--    </div>
 </div>
 
-<!--    konec tab_grundinfo-->
-</div>
+    konec tab_grundinfo
+</div>-->
 
     <div id="tab_aplinfo" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
                 <div class="bottomButton">
@@ -340,7 +341,8 @@
     <div id="tab_lohninfo" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
                 <div class="bottomButton">
@@ -348,7 +350,7 @@
                         <li><span class="formularcontrol">{$form['anwesenheit']->control}</span></li>
                         <li><span class="formularcontrol">{$form['vorschuss']->control}</span></li>
                         <li><span class="formularcontrol">{$form['sonstpremie']->control}</span></li>
-                        <li><span class="formularcontrol">{$form['dperszuschlag']->control}</span></li>
+<!--                        <li><span class="formularcontrol">{$form['dperszuschlag']->control}</span></li>-->
                         <li><span class="formularcontrol">{$form['abmahnung']->control}</span></li>
                         <li><span class="formularcontrol">{$form['essen']->control}</span></li>
                         <li><span class="formularcontrol">{$form['transport']->control}</span></li>
@@ -356,9 +358,9 @@
                 </div>
 
                 <div class="formularfieldset {$secclasses['lesen'][$form_id.'_lohninfo']}" id="lohninfo">
-                    <h1>Lohninfo</h1>
+                    <!--<h1>Lohninfo</h1>-->
                     <table border="0">
-                        <tr>
+<!--                        <tr>
                             <td><span class="fieldlabel">{$form['premie_za_vykon']->label}</span></td><td><span class="formularcontrol">{$form['premie_za_vykon']->control}</span></td>
                             <td><span class="fieldlabel">{$form['qpremie_akkord']->label}</span></td><td><span class="formularcontrol">{$form['qpremie_akkord']->control}</span></td>
                             <td><span class="fieldlabel">{$form['premie_za_prasnost']->label}</span></td><td><span class="formularcontrol">{$form['premie_za_prasnost']->control}</span></td>
@@ -381,7 +383,7 @@
                         </tr>
                         <tr>
                             <td><span class="fieldlabel">{$form['leistfaktor']->label}</span></td><td><span class="formularcontrol">{$form['leistfaktor']->control}</span></td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td colspan="4">Urlaub</td>
                         </tr>
@@ -390,6 +392,12 @@
                             <td><span class="fieldlabel">{$form['rest']->label}</span><span class="fieldlabel">{$form['rest']->control}</span></td>
                             <td><span class="fieldlabel">{$form['gekrzt']->label}</span></td><td><span class="fieldlabel">{$form['gekrzt']->control}</span></td>
                         </tr>
+			<tr>
+			    <td>
+				<span class="formularcontrol">{$form['vertrag']->control}</span>
+			    </td>
+			</tr>
+			
                     </table>
                 </div>
             </div>
@@ -400,7 +408,8 @@
     <div id="tab_ausbildung" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
                 <div class="bottomButton">
@@ -415,7 +424,8 @@
     <div id="tab_sicherheit" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
                 <div class="bottomButton">
@@ -466,7 +476,8 @@
     <div id="tab_bewerber" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
 <!--                <div class="bottomButton">
@@ -475,9 +486,10 @@
                     </ul>
                 </div>-->
                 <div class="formularfieldset" id="bewerber_vor_eintritt">
-                    <h1>Vor dem Eintritt</h1>
+                    <!--<h1>Vor dem Eintritt</h1>-->
+		    <h1>Austritt</h1>
                     <table border="0">
-                        <tr>
+<!--                        <tr>
                             <td>
                                 <span class="fieldlabel">{$form['bewerb_datum']->label}</span>
                             </td>
@@ -561,7 +573,7 @@
                             <td>
                                 <span class="fieldlabel">{$form['bew_geeignet_aktual_id']->control}</span>
                             </td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td>
                                 <span class="fieldlabel">{$form['beendet_recht_id']->label}</span>
@@ -576,7 +588,7 @@
                                 <span class="fieldlabel">{$form['beendet_real_id']->control}</span>
                             </td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <td>
                                 <span class="fieldlabel">{$form['erledigt']->label}</span>
                             </td>
@@ -633,7 +645,7 @@
                             <td>
                                 <span class="fieldlabel">{$form['wettbewerb_1000_CZK']->control}</span>
                             </td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td>
                                 <span class="fieldlabel">{$form['beendet_vom']->label}</span>
@@ -659,7 +671,7 @@
         </div>
     </div>
 
-    <div id="tab_sonst" class="tab_content">
+<!--    <div id="tab_sonst" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
                 <div class="persid"></div>
@@ -667,12 +679,13 @@
             <div class="formularbody">
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div id="tab_dokumente" class="tab_content">
         <div class="formulardiv">
             <div class="formularcaption">
-                <div class="persid"></div>
+                <!--<div class="persid"></div>-->
+		<div class="persid">{$persinfo->persnr} - {$persinfo->name} {$persinfo->vorname}</div>
             </div>
             <div class="formularbody">
 		<input type="hidden" id="dokumente_savePath" value="{$savePath}" />

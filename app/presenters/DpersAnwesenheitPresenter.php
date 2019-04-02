@@ -75,19 +75,22 @@ class DpersAnwesenheitPresenter extends BasePresenter{
         return round($stunden,2);
     }
 
-    function roundBisAuf8Std($stunden,$von,$bis,$pause){
-        $bisStr = $bis;
-        if(($stunden>7.5) && ($stunden<8)){
-            $hodVon = intval(substr($von, 0, 2));
-            $minVon = intval(substr($von, 3, 2));
-            $bis = ($hodVon+$minVon/60)+8.5;
-            $bisHod = floor($bis);
-            $bisMin = round(($bis-$bisHod)*60,0);
-            $bisStr = sprintf("%02d:%02d",$bisHod,$bisMin);
-        }
-        return $bisStr;
+    function roundBisAuf8Std($stunden, $von, $bis, $pause, $anwgruppe = 0) {
+	$bisStr = $bis;
+	// jen u skupin v podmince budu zaokrouhlovat na 8 hodin, ostatni budou mit dochazku presne podle spotrebovaneho casu
+	if ($anwgruppe == 10) {
+	    if (($stunden > 7.5) && ($stunden < 8)) {
+		$hodVon = intval(substr($von, 0, 2));
+		$minVon = intval(substr($von, 3, 2));
+		$bis = ($hodVon + $minVon / 60) + 8.5;
+		$bisHod = floor($bis);
+		$bisMin = round(($bis - $bisHod) * 60, 0);
+		$bisStr = sprintf("%02d:%02d", $bisHod, $bisMin);
+	    }
+	}
+	return $bisStr;
     }
-    
+
     function getEdataAnwTableDivString($datum, $persnr) {
         $div = "";
 
@@ -109,7 +112,7 @@ class DpersAnwesenheitPresenter extends BasePresenter{
                 }
                 
                 if($persInfoArray!==NULL){
-                    $name = $persInfoArray['name'].' '.$persInfoArray['vorname'];
+                    $name = $persInfoArray['name'].' '.$persInfoArray['vorname']."( anwgr.:".$persInfoArray['anwgruppe']." )";
                 }
                 else{
                     $name='';
@@ -180,7 +183,8 @@ class DpersAnwesenheitPresenter extends BasePresenter{
                         // spocitat celkovy pocet hodin z von a bis
                         $stunden = $this->getStundenBetweenVonBis($vonP, $bisP)-$pause;
                         $pauseF = number_format($sumPause, 2, ',', ' ');
-                        $bisP = $this->roundBisAuf8Std($stunden, $vonP, $bisP, $pause);
+			$ag = intval($persInfoArray['anwgruppe']);
+                        $bisP = $this->roundBisAuf8Std($stunden, $vonP, $bisP, $pause, $ag);
                         
                         $div.="<tr id='r_".$persnr."_".$citac."'>";
                         $div.="<td acturl='$acturl' id='oe_".$persnr."_".$citac."' class='tvalue_oe'>$oeold</td>";
@@ -249,7 +253,8 @@ class DpersAnwesenheitPresenter extends BasePresenter{
                         $stunden = $this->getStundenBetweenVonBis($vonStart, $bisStart)-$sumPauseAll;
                         $acturl='';
                         $pauseF = number_format($sumPause, 2, ',', ' ');
-                        $bis = $this->roundBisAuf8Std($stunden, $vonStart, $bis, $sumPauseAll);
+			$ag = intval($persInfoArray['anwgruppe']);
+                        $bis = $this->roundBisAuf8Std($stunden, $vonStart, $bis, $sumPauseAll,$ag);
                         $div.="<tr id='r_".$persnr."_".$citac."'>";
                         $div.="<td acturl='$acturl' id='oe_".$persnr."_".$citac."' class='tvalue_oe'>$oeold</td>";
                         $div.="<td class='tvalue_von'><input id='von_".$persnr."_".$citac."' value='$vonP' maxlength='5' size='5' acturl='$acturl'/></td>";
@@ -453,7 +458,7 @@ class DpersAnwesenheitPresenter extends BasePresenter{
 
         $persnr = '';
         $days = 7;
-        $personenArray = $this->model->getPlanStundenArray($persnr,$planoe,  Utility::make_DB_datum($datumvon),$days);
+        $personenArray = $this->model->getPlanStundenArray($persnr,$planoe,  Utility::make_DB_datum($datumvon),$days,TRUE);
         $this->getAjaxDriver()->personenArray = $personenArray;
 
         $timestampVon = strtotime(Utility::make_DB_datum($datumvon));
@@ -887,6 +892,8 @@ public function actionMonatFuellenStandard($monatjahr){
                     $this->terminate();
                 }
 
+		$svatkyArray = $aplDB->getSvatkyArray($rok, $mesic);
+		$this->getAjaxDriver()->svatkyarray = $svatkyArray;
                 $planinfo = $aplDB->getPlanInfo($rok,$mesic,$persnr);
                 $this->getAjaxDriver()->planinfo = $planinfo;
 
